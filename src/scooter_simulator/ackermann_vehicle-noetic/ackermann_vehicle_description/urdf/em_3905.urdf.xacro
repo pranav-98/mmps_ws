@@ -52,14 +52,14 @@ limitations under the License.
        batteries. battery_comp_depth is the battery compartment depth.
        battery_length is measured along the x axis, battery_width
        along the y axis, and battery_height along the z axis. -->
-  <xacro:property name="battery_x_offset" value="0.055"/>
+  <!-- <xacro:property name="battery_x_offset" value="0.055"/>
   <xacro:property name="battery_dist" value="0.065"/>
   <xacro:property name="battery_comp_depth" value="0.02"/>
   <xacro:property name="battery_comp_angle" value="0.34906585"/>
   <xacro:property name="battery_length" value="0.16"/>
   <xacro:property name="battery_width" value="0.047"/>
   <xacro:property name="battery_height" value="0.024"/>
-  <xacro:property name="battery_mass" value="0.5025"/>
+  <xacro:property name="battery_mass" value="0.5025"/> -->
 
   <!-- hub_dia and tire_dia are the diameters of the hub and tire,
        respectively. hex_hub_depth is the distance that the hex hub is
@@ -112,9 +112,9 @@ limitations under the License.
   <xacro:property name="servo_stall_torque" value="0.5649"/>
   <xacro:property name="servo_no_load_speed" value="4.553"/>
 
-  <material name="battery_mat">
+  <!-- <material name="battery_mat">
     <color rgba="0 0 1 1"/>
-  </material>
+  </material> -->
   <material name="chassis_mat">
     <color rgba="0.5 0.5 0.5 1"/>
   </material>
@@ -165,7 +165,7 @@ limitations under the License.
   </xacro:macro>
 
   <!-- Battery -->
-  <xacro:macro name="battery" params="prefix reflect">
+  <!-- <xacro:macro name="battery" params="prefix reflect">
     <joint name="chassis_to_${prefix}_battery" type="fixed">
       <parent link="chassis"/>
       <child link="${prefix}_battery_offset"/>
@@ -211,7 +211,7 @@ limitations under the License.
     <gazebo reference="${prefix}_battery">
       <material>Gazebo/Blue</material>
     </gazebo>
-  </xacro:macro>
+  </xacro:macro> -->
 
   <!-- Shock absorber -->
   <xacro:macro name="shock"
@@ -357,7 +357,7 @@ limitations under the License.
     </visual>
   </link>
   <gazebo reference="base_link">
-    <material>Gazebo/Grey</material>
+    <material>Gazebo/Blue</material>
   </gazebo>
 
   <!-- Chassis -->
@@ -384,7 +384,7 @@ limitations under the License.
     </xacro:solid_cuboid_inertial>
   </link>
   <gazebo reference="chassis">
-    <material>Gazebo/Grey</material>
+    <material>Gazebo/Blue</material>
   </gazebo>
 
   <joint name="base_link_to_chassis" type="fixed">
@@ -393,8 +393,8 @@ limitations under the License.
   </joint>
 
   <!-- Batteries -->
-  <xacro:battery prefix="left" reflect="1"/>
-  <xacro:battery prefix="right" reflect="-1"/>
+  <!-- <xacro:battery prefix="left" reflect="1"/>
+  <xacro:battery prefix="right" reflect="-1"/> -->
 
   <!-- Wheels -->
   <xacro:front_wheel lr_prefix="left" fr_prefix="front"
@@ -409,4 +409,48 @@ limitations under the License.
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"/>
   </gazebo>
+
+    <!-- IMU frame -->
+  <link name="imu_link"> 
+    <visual> 
+      <geometry> 
+        <box size="0.02 0.035 0.002"/> 
+      </geometry> 
+      <material name="Green"/> 
+    </visual> 
+    <inertial> 
+      <mass value="0.001"/> 
+      <origin xyz="0 0 0"/> 
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/> 
+    </inertial> 
+  </link>
+
+  <joint name="imu_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="imu_link" />
+  </joint>
+
+  <gazebo reference="imu_link">
+    <gravity>true</gravity>
+    <sensor name="imu_sensor" type="imu">
+      <always_on>true</always_on>
+      <update_rate>100</update_rate>
+      <visualize>true</visualize>
+      <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+	      <topicName>/ackermann_vehicle/imu</topicName>
+        <bodyName>imu_link</bodyName>
+        <updateRateHZ>100.0</updateRateHZ>
+        <gaussianNoise>0.0</gaussianNoise>
+        <xyzOffset>0 0 0</xyzOffset>
+        <rpyOffset>0 0 0</rpyOffset>
+        <frameName>imu_link</frameName>
+        <initialOrientationAsReference>false</initialOrientationAsReference>
+      </plugin>
+      <pose>0 0 0 0 0 0</pose>
+    </sensor>
+  </gazebo>
+
+
+
 </robot>
