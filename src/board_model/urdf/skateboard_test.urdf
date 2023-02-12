@@ -2,8 +2,9 @@
 <!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
      Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
      For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
-<robot
-  name="skateboard_test">
+<robot name="skateboard_test">
+
+
    <link name="base_link">
     <visual>
       <geometry>
@@ -14,179 +15,108 @@
   <gazebo reference="base_link">
     <material>Gazebo/Blue</material>
   </gazebo>
-  
-  <link
-    name="board">
+
+
+  <link name="board">
     <inertial>
-      <origin
-        xyz="1.11022302462516E-16 2.22044604925031E-16 -0.02"
-        rpy="0 0 0" />
-      <mass
-        value="27.3013030088211" />
-      <inertia
-        ixx="0.436974212688559"
-        ixy="-2.08482647590779E-16"
-        ixz="1.46553164878288E-18"
-        iyy="5.52949386470104"
-        iyz="-5.6225255944912E-35"
-        izz="5.95908972393442" />
+      <origin xyz="1.11022302462516E-16 2.22044604925031E-16 -0.02" rpy="0 0 0" />
+      <mass value="27.3013030088211" />
+      <inertia ixx="0.436974212688559" ixy="-2.08482647590779E-16" ixz="1.46553164878288E-18" iyy="5.52949386470104" iyz="-5.6225255944912E-35" izz="5.95908972393442" />
     </inertial>
     <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh
-          filename="package://board_model/meshes/board.STL" />
+        <mesh filename="package://board_model/meshes/board.STL" />
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
       </material>
     </visual>
     <collision>
       <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+        xyz="0 0 0" rpy="0 0 0" />
       <geometry>
         <mesh
           filename="package://board_model/meshes/board.STL" />
       </geometry>
     </collision>
   </link>
+
   <joint name="base_link_to_board" type="fixed">
     <parent link="base_link"/>
     <child link="board"/>
   </joint>
 
-  <link
-    name="RL">
+
+  <link name="RL">
     <inertial>
-      <origin
-        xyz="0 -0.0164457831325302 0"
-        rpy="0 0 0" />
-      <mass
-        value="0.977820713429824" />
-      <inertia
-        ixx="0.00249073621179516"
-        ixy="1.44480049501577E-19"
-        ixz="-1.54917164485708E-35"
-        iyy="0.00471636505858689"
-        iyz="-1.27332169414445E-36"
-        izz="0.00249073621179516" />
+      <origin xyz="0 -0.0164457831325302 0" rpy="0 0 0" />
+      <mass value="0.977820713429824" />
+      <inertia ixx="0.00249073621179516" ixy="1.44480049501577E-19" ixz="-1.54917164485708E-35" iyy="0.00471636505858689" iyz="-1.27332169414445E-36" izz="0.00249073621179516" />
     </inertial>
     <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh
-          filename="package://board_model/meshes/RL.STL" />
+        <mesh filename="package://board_model/meshes/RL.STL" />
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
       </material>
     </visual>
     <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh
-          filename="package://board_model/meshes/RL.STL" />
+        <mesh filename="package://board_model/meshes/RL.STL" />
       </geometry>
     </collision>
   </link>
-  <joint
-    name="RLM"
-    type="continuous">
-    <origin
-      xyz="-0.5 0.264838012958963 -0.02"
-      rpy="0 0 0" />
-    <parent
-      link="board" />
-    <child
-      link="RL" />
-    <axis
-      xyz="0 -1 0" />
-    <limit
-      effort="1"
-      velocity="1" />
+
+  <joint name="RLM" type="continuous">
+    <origin xyz="-0.5 0.264838012958963 -0.02" rpy="0 0 0" />
+    <parent link="board" />
+    <child link="RL" />
+    <axis xyz="0 -1 0" />
+    <limit effort="1" velocity="1" />
   </joint>
-  <link
-    name="FL">
+
+
+  <link name="FL">
     <inertial>
-      <origin
-        xyz="0 -0.0164457831325302 0"
-        rpy="0 0 0" />
-      <mass
-        value="0.977820713429824" />
-      <inertia
-        ixx="0.00249073621179516"
-        ixy="-5.28109900243798E-20"
-        ixz="2.89909158180102E-19"
-        iyy="0.00471636505858689"
-        iyz="7.85944170610457E-20"
-        izz="0.00249073621179516" />
+      <origin xyz="0 -0.0164457831325302 0" rpy="0 0 0" />
+      <mass value="0.977820713429824" />
+      <inertia ixx="0.00249073621179516" ixy="-5.28109900243798E-20" ixz="2.89909158180102E-19" iyy="0.00471636505858689" iyz="7.85944170610457E-20" izz="0.00249073621179516" />
     </inertial>
     <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh
-          filename="package://board_model/meshes/FL.STL" />
+        <mesh filename="package://board_model/meshes/FL.STL" />
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
       </material>
     </visual>
     <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh
-          filename="package://board_model/meshes/FL.STL" />
+        <mesh filename="package://board_model/meshes/FL.STL" />
       </geometry>
     </collision>
   </link>
-  <joint
-    name="FLM"
-    type="continuous">
-    <origin
-      xyz="0.5 0.264838012958963 -0.0199999999999998"
-      rpy="0 0 0" />
-    <parent
-      link="board" />
-    <child
-      link="FL" />
-    <axis
-      xyz="0 -1 0" />
-    <limit
-      effort="1"
-      velocity="1" />
+
+  <joint name="FLM" type="continuous">
+    <origin xyz="0.5 0.264838012958963 -0.0199999999999998" rpy="0 0 0" />
+    <parent link="board" />
+    <child link="FL" />
+    <axis xyz="0 -1 0" />
+    <limit effort="1" velocity="1" />
   </joint>
-  <link
-    name="RR">
+
+
+  <link name="RR">
     <inertial>
-      <origin
-        xyz="-1.11022302462516E-16 0.0164457831325302 0"
-        rpy="0 0 0" />
-      <mass
-        value="0.977820713429824" />
-      <inertia
-        ixx="0.00249073621179516"
-        ixy="-1.54140749670845E-17"
-        ixz="1.54917164485711E-35"
-        iyy="0.00471636505858689"
-        iyz="1.27332169414449E-36"
-        izz="0.00249073621179516" />
+      <origin xyz="-1.11022302462516E-16 0.0164457831325302 0" rpy="0 0 0" />
+      <mass value="0.977820713429824" />
+      <inertia ixx="0.00249073621179516" ixy="-1.54140749670845E-17" ixz="1.54917164485711E-35" iyy="0.00471636505858689" iyz="1.27332169414449E-36" izz="0.00249073621179516" />
     </inertial>
     <visual>
       <origin
@@ -196,92 +126,56 @@
         <mesh
           filename="package://board_model/meshes/RR.STL" />
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
       </material>
     </visual>
     <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh
-          filename="package://board_model/meshes/RR.STL" />
+        <mesh filename="package://board_model/meshes/RR.STL" />
       </geometry>
     </collision>
   </link>
-  <joint
-    name="RRM"
-    type="continuous">
-    <origin
-      xyz="-0.500000000000007 -0.26483801295897 -0.0199999999999996"
-      rpy="0 0 0" />
-    <parent
-      link="board" />
-    <child
-      link="RR" />
-    <axis
-      xyz="0 -1 0" />
-    <limit
-      effort="1"
-      velocity="1" />
+
+  <joint name="RRM" type="continuous">
+    <origin xyz="-0.500000000000007 -0.26483801295897 -0.0199999999999996" rpy="0 0 0" />
+    <parent link="board" />
+    <child link="RR" />
+    <axis xyz="0 -1 0" />
+    <limit effort="1" velocity="1" />
   </joint>
-  <link
-    name="FR">
+
+
+  <link name="FR">
     <inertial>
-      <origin
-        xyz="-1.11022302462516E-16 0.0164457831325302 0"
-        rpy="0 0 0" />
-      <mass
-        value="0.977820713429824" />
-      <inertia
-        ixx="0.00249073621179516"
-        ixy="-1.54115109552635E-17"
-        ixz="1.5491716448571E-35"
-        iyy="0.00471636505858689"
-        iyz="1.27332169414452E-36"
-        izz="0.00249073621179516" />
+      <origin xyz="-1.11022302462516E-16 0.0164457831325302 0" rpy="0 0 0" />
+      <mass value="0.977820713429824" />
+      <inertia ixx="0.00249073621179516" ixy="-1.54115109552635E-17" ixz="1.5491716448571E-35" iyy="0.00471636505858689" iyz="1.27332169414452E-36" izz="0.00249073621179516" />
     </inertial>
     <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh
-          filename="package://board_model/meshes/FR.STL" />
+        <mesh filename="package://board_model/meshes/FR.STL" />
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
       </material>
     </visual>
     <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh
-          filename="package://board_model/meshes/FR.STL" />
+        <mesh filename="package://board_model/meshes/FR.STL" />
       </geometry>
     </collision>
   </link>
-  <joint
-    name="FRM"
-    type="continuous">
-    <origin
-      xyz="0.499999999999993 -0.264838012958963 -0.0199999999999998"
-      rpy="0 0 0" />
-    <parent
-      link="board" />
-    <child
-      link="FR" />
-    <axis
-      xyz="0 -1 0" />
-    <limit
-      effort="1"
-      velocity="1" />
+
+  <joint name="FRM" type="continuous">
+    <origin xyz="0.499999999999993 -0.264838012958963 -0.0199999999999998" rpy="0 0 0" />
+    <parent link="board" />
+    <child link="FR" />
+    <axis xyz="0 -1 0" />
+    <limit effort="1" velocity="1" />
   </joint>
+  
 </robot>
