@@ -11,11 +11,10 @@
         <box size="0.01 0.01 0.01"/>
       </geometry>
     </visual>
-  
-    <gazebo reference="base_link">
-        <material>Gazebo/Blue</material>
-    </gazebo>
   </link>
+  <gazebo reference="base_link">
+    <material>Gazebo/Blue</material>
+  </gazebo>
 
 
   <link name="board">
@@ -179,6 +178,21 @@
     <limit effort="1" velocity="1" />
   </joint>
 
+  <!-- Camera Link -->
+  <link name="camera_link"></link>
+    <link name="kinect_optical_link"></link>
+    
+    <joint name="robot_camera_joint" type="fixed">
+      <origin xyz="-0.05 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <parent link="base_link" />
+      <child link="camera_link" />
+    </joint>
+    <joint name="camera_optical_joint" type="fixed">
+      <origin xyz="0 0 0" rpy="-1.57 0 -1.57" />
+      <parent link="base_link" />
+      <child link="kinect_optical_link" />
+    </joint>
+
 <gazebo>
   <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
     <updateRate>10.0</updateRate>
@@ -236,6 +250,51 @@
     </sensor>
   </gazebo>
 
-  
+<!--Adding a Camera-->
 
+<gazebo reference="camera_link">
+      
+  <sensor type="depth" name="kinect">
+<always_on>1</always_on>
+<visualize>true</visualize>
+<update_rate>0</update_rate>
+<camera>
+  <horizontal_fov>1.047198</horizontal_fov>
+  <image>
+    <width>640</width>
+    <height>480</height>
+    <format>B8G8R8</format>  <!--Changed format since channels were inverted, to go back, change to R8G8B8-->
+  </image>
+  <clip>
+    <near>0.01</near>
+    <far>3</far>
+  </clip>
+</camera>
+
+<plugin name="camera_controller" filename="libgazebo_ros_openni_kinect.so">
+  <baseline>0.2</baseline>
+  <alwaysOn>true</alwaysOn>
+  <updateRate>0.0</updateRate>
+  <cameraName>/kinect</cameraName>
+  <imageTopicName>/kinect/depth/image_raw</imageTopicName>
+  <cameraInfoTopicName>/kinect/depth/camera_info</cameraInfoTopicName>
+  <depthImageTopicName>/kinect/depth/image_raw</depthImageTopicName>
+  <depthImageInfoTopicName>/kinect/depth/camera_info</depthImageInfoTopicName>
+  <pointCloudTopicName>/kinect/depth/points</pointCloudTopicName>
+  <frameName>kinect_optical_link</frameName>
+  <pointCloudCutoff>0.1</pointCloudCutoff>
+  <pointCloudCutoffMax>3</pointCloudCutoffMax>
+  <distortionK1>0</distortionK1>
+  <distortionK2>0</distortionK2>
+  <distortionK3>0</distortionK3>
+  <distortionT1>0</distortionT1>
+  <distortionT2>0</distortionT2>
+  <CxPrime>0</CxPrime>
+  <Cx>0</Cx>
+  <Cy>0</Cy>
+  <focalLength>0</focalLength>
+  <hackBaseline>0</hackBaseline>
+</plugin>
+  </sensor>
+</gazebo>
 </robot>
