@@ -10,7 +10,7 @@
   
   <node name="fake_joint_calibration" pkg="rostopic" type="rostopic" args="pub /calibrated std_msgs/Bool true" />
 
-  <param name="robot_description" textfile="$(find board_model)/urdf/skateboard_test.urdf" />
+  <param name="robot_description" textfile="$(find board_model)/urdf/skateboard_imu_Camera.urdf" />
   
   <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
   
