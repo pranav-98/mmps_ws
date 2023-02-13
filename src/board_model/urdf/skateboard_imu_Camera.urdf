@@ -11,10 +11,11 @@
         <box size="0.01 0.01 0.01"/>
       </geometry>
     </visual>
+  
+    <gazebo reference="base_link">
+        <material>Gazebo/Blue</material>
+    </gazebo>
   </link>
-  <gazebo reference="base_link">
-    <material>Gazebo/Blue</material>
-  </gazebo>
 
 
   <link name="board">
