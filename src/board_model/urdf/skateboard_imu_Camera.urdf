@@ -41,6 +41,9 @@
       </geometry>
     </collision>
   </link>
+  <gazebo reference="board">
+    <material>Gazebo/Orange</material>
+  </gazebo>
 
   <joint name="base_link_to_board" type="fixed">
     <parent link="base_link"/>
@@ -70,6 +73,9 @@
       </geometry>
     </collision>
   </link>
+  <gazebo reference="RL">
+    <material>Gazebo/Green</material>
+  </gazebo>
 
   <joint name="RLM" type="continuous">
     <origin xyz="-0.5 0.264838012958963 -0.02" rpy="0 0 0" />
@@ -102,6 +108,9 @@
       </geometry>
     </collision>
   </link>
+  <gazebo reference="FL">
+    <material>Gazebo/Green</material>
+  </gazebo>
 
   <joint name="FLM" type="continuous">
     <origin xyz="0.5 0.264838012958963 -0.0199999999999998" rpy="0 0 0" />
@@ -137,6 +146,9 @@
       </geometry>
     </collision>
   </link>
+  <gazebo reference="RR">
+    <material>Gazebo/Green</material>
+  </gazebo>
 
   <joint name="RRM" type="continuous">
     <origin xyz="-0.500000000000007 -0.26483801295897 -0.0199999999999996" rpy="0 0 0" />
@@ -169,6 +181,9 @@
       </geometry>
     </collision>
   </link>
+  <gazebo reference="FR">
+    <material>Gazebo/Green</material>
+  </gazebo>
 
   <joint name="FRM" type="continuous">
     <origin xyz="0.499999999999993 -0.264838012958963 -0.0199999999999998" rpy="0 0 0" />
@@ -179,17 +194,35 @@
   </joint>
 
   <!-- Camera Link -->
-  <link name="camera_link"></link>
+  <link name="camera_link">
+    <inertial>
+      <mass value = "0.1"/>
+      <inertia ixx="0.000001" ixy="0" ixz="0" iyy="0.0000001" iyz="0" izz="0.000001"/>
+    </inertial>
+    <collision>
+      <origin xyz="0.85 0.0 0.05" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <box size = "0.073000 0.276000 0.072000"/>
+      </geometry>
+    </collision>
+      <visual>
+        <origin xyz="0.85 0.0 0.05" rpy="0.0 0.0 0.0"/>
+        <geometry>
+          <mesh filename = "package://board_model/models/kinect/meshes/kinect.dae"/>
+        </geometry>
+      </visual>
+  </link>
+
     <link name="kinect_optical_link"></link>
     
     <joint name="robot_camera_joint" type="fixed">
-      <origin xyz="-0.05 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <origin xyz="0.85 0.0 0.05" rpy="0.0 0.0 0.0" />
       <parent link="base_link" />
       <child link="camera_link" />
     </joint>
     <joint name="camera_optical_joint" type="fixed">
       <origin xyz="0 0 0" rpy="-1.57 0 -1.57" />
-      <parent link="base_link" />
+      <parent link="camera_link" />
       <child link="kinect_optical_link" />
     </joint>
 
