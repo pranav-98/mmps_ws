@@ -2,7 +2,7 @@
 <!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
      Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
      For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
-<robot name="skateboard_test">
+<robot name="mob_bot">
 
 
    <link name="base_link">
@@ -193,7 +193,7 @@
       <child link="kinect_optical_link" />
     </joint>
 
-<gazebo>
+<!-- <gazebo>
   <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
     <updateRate>10.0</updateRate>
     <robotNamespace>/</robotNamespace>
@@ -208,7 +208,7 @@
     <topicName>cmd_vel</topicName>
     <broadcastTF>false</broadcastTF>
   </plugin>
-</gazebo>
+</gazebo> -->
 
   <link name="imu_link"> 
     <visual> 
@@ -297,4 +297,49 @@
 </plugin>
   </sensor>
 </gazebo>
+
+
+  <transmission name="tran1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="RLM">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor1">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="FLM">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor2">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran3">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="RRM">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor3">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran4">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="FRM">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor4">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
 </robot>
