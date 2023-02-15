@@ -1,0 +1,19 @@
+mob_bot:
+
+
+  # Effort Controllers ---------------------------------------
+  joint1_effort_controller:
+    type: effort_controllers/JointEffortController
+    joint: RLM
+
+  joint2_effort_controller:
+    type: effort_controllers/JointEffortController
+    joint: FLM
+
+  joint3_effort_controller:
+    type: effort_controllers/JointEffortController
+    joint: RRM
+
+  joint4_effort_controller:
+    type: effort_controllers/JointEffortController
+    joint: FRM
