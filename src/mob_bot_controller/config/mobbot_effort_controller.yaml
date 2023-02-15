@@ -1,5 +1,9 @@
 mob_bot:
 
+  # joint_state_controller:
+  #   type: joint_state_controller/JointStateController
+  #   publish_rate: 50
+
 
   # Effort Controllers ---------------------------------------
   joint1_effort_controller:

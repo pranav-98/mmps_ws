@@ -1,0 +1,15 @@
+<launch>
+
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find mob_bot_controller)/config/mobbot_effort_controller.yaml" command="load"/>
+
+  <!-- load the controllers -->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+	output="screen" ns="/mob_bot" args="joint1_effort_controller
+            joint2_effort_controller
+					  joint3_effort_controller
+                      joint4_effort_controller"/>
+
+  
+
+</launch>

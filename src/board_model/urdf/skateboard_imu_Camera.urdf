@@ -298,6 +298,12 @@
   </sensor>
 </gazebo>
 
+<gazebo>
+  <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+    <robotNamespace>/mob_bot</robotNamespace>
+  </plugin>
+</gazebo> 
+
 
   <transmission name="tran1">
     <type>transmission_interface/SimpleTransmission</type>
