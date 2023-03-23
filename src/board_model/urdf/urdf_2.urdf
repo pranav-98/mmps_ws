@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot name="skateboard_test">
+
+
+   <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+    </visual>
+  </link>
+  <gazebo reference="base_link">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+
+
+  <link name="board">
+    <inertial>
+      <origin xyz="1.11022302462516E-16 2.22044604925031E-16 -0.02" rpy="0 0 0" />
+      <mass value="27.3013030088211" />
+      <inertia ixx="0.436974212688559" ixy="-2.08482647590779E-16" ixz="1.46553164878288E-18" iyy="5.52949386470104" iyz="-5.6225255944912E-35" izz="5.95908972393442" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://board_model/meshes/board.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://board_model/meshes/board.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="board">
+    <material>Gazebo/Orange</material>
+  </gazebo>
+
+  <joint name="base_link_to_board" type="fixed">
+    <parent link="base_link"/>
+    <child link="board"/>
+  </joint>
+
+
+  <link name="RL">
+    <inertial>
+      <origin xyz="0 -0.0164457831325302 0" rpy="0 0 0" />
+      <mass value="0.977820713429824" />
+      <inertia ixx="0.00249073621179516" ixy="1.44480049501577E-19" ixz="-1.54917164485708E-35" iyy="0.00471636505858689" iyz="-1.27332169414445E-36" izz="0.00249073621179516" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://board_model/meshes/RL.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://board_model/meshes/RL.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="RL">
+    <material>Gazebo/Green</material>
+  </gazebo>
+
+  <joint name="RLM" type="continuous">
+    <origin xyz="-0.5 0.264838012958963 -0.02" rpy="0 0 0" />
+    <parent link="board" />
+    <child link="RL" />
+    <axis xyz="0 -1 0" />
+    <limit effort="1" velocity="1" />
+  </joint>
+
+
+  <link name="FL">
+    <inertial>
+      <origin xyz="0 -0.0164457831325302 0" rpy="0 0 0" />
+      <mass value="0.977820713429824" />
+      <inertia ixx="0.00249073621179516" ixy="-5.28109900243798E-20" ixz="2.89909158180102E-19" iyy="0.00471636505858689" iyz="7.85944170610457E-20" izz="0.00249073621179516" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://board_model/meshes/FL.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://board_model/meshes/FL.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="FL">
+    <material>Gazebo/Green</material>
+  </gazebo>
+
+  <joint name="FLM" type="continuous">
+    <origin xyz="0.5 0.264838012958963 -0.0199999999999998" rpy="0 0 0" />
+    <parent link="board" />
+    <child link="FL" />
+    <axis xyz="0 -1 0" />
+    <limit effort="1" velocity="1" />
+  </joint>
+
+
+  <link name="RR">
+    <inertial>
+      <origin xyz="-1.11022302462516E-16 0.0164457831325302 0" rpy="0 0 0" />
+      <mass value="0.977820713429824" />
+      <inertia ixx="0.00249073621179516" ixy="-1.54140749670845E-17" ixz="1.54917164485711E-35" iyy="0.00471636505858689" iyz="1.27332169414449E-36" izz="0.00249073621179516" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://board_model/meshes/RR.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://board_model/meshes/RR.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="RR">
+    <material>Gazebo/Green</material>
+  </gazebo>
+
+  <joint name="RRM" type="continuous">
+    <origin xyz="-0.500000000000007 -0.26483801295897 -0.0199999999999996" rpy="0 0 0" />
+    <parent link="board" />
+    <child link="RR" />
+    <axis xyz="0 -1 0" />
+    <limit effort="1" velocity="1" />
+  </joint>
+
+
+  <link name="FR">
+    <inertial>
+      <origin xyz="-1.11022302462516E-16 0.0164457831325302 0" rpy="0 0 0" />
+      <mass value="0.977820713429824" />
+      <inertia ixx="0.00249073621179516" ixy="-1.54115109552635E-17" ixz="1.5491716448571E-35" iyy="0.00471636505858689" iyz="1.27332169414452E-36" izz="0.00249073621179516" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://board_model/meshes/FR.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://board_model/meshes/FR.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="FR">
+    <material>Gazebo/Green</material>
+  </gazebo>
+
+  <joint name="FRM" type="continuous">
+    <origin xyz="0.499999999999993 -0.264838012958963 -0.0199999999999998" rpy="0 0 0" />
+    <parent link="board" />
+    <child link="FR" />
+    <axis xyz="0 -1 0" />
+    <limit effort="1" velocity="1" />
+  </joint>
+
+  <!-- Camera Link -->
+  <link name="camera_link"></link>
+    <link name="kinect_optical_link"></link>
+    
+    <joint name="robot_camera_joint" type="fixed">
+      <origin xyz="-0.05 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <parent link="base_link" />
+      <child link="camera_link" />
+    </joint>
+    <joint name="camera_optical_joint" type="fixed">
+      <origin xyz="0 0 0" rpy="-1.57 0 -1.57" />
+      <parent link="base_link" />
+      <child link="kinect_optical_link" />
+    </joint>
+
+<!-- <gazebo>
+  <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
+    <updateRate>10.0</updateRate>
+    <robotNamespace>/</robotNamespace>
+    <leftFrontJoint>FLM</leftFrontJoint>
+    <rightFrontJoint>FRM</rightFrontJoint>
+    <leftRearJoint>RLM</leftRearJoint>
+    <rightRearJoint>RRM</rightRearJoint>
+    <wheelSeparation>0.4</wheelSeparation>
+    <wheelDiameter>0.215</wheelDiameter>
+    <robotBaseFrame>base_link</robotBaseFrame>
+    <torque>10</torque>
+    <topicName>cmd_vel</topicName>
+    <broadcastTF>false</broadcastTF>
+  </plugin>
+</gazebo> -->
+
+  <link name="imu_link"> 
+    <visual> 
+      <geometry> 
+        <box size="0.02 0.035 0.002"/> 
+      </geometry> 
+      <material name="Green"/> 
+    </visual> 
+    <inertial> 
+      <mass value="0.001"/> 
+      <origin xyz="0 0 0"/> 
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/> 
+    </inertial> 
+  </link>
+
+  <joint name="imu_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="imu_link" />
+  </joint>
+
+  <gazebo reference="imu_link">
+    <gravity>true</gravity>
+    <sensor name="imu_sensor" type="imu">
+      <always_on>true</always_on>
+      <update_rate>100</update_rate>
+      <visualize>true</visualize>
+      <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+	      <topicName>/imu</topicName>
+        <bodyName>imu_link</bodyName>
+        <updateRateHZ>100.0</updateRateHZ>
+        <gaussianNoise>0.0</gaussianNoise>
+        <xyzOffset>0 0 0</xyzOffset>
+        <rpyOffset>0 0 0</rpyOffset>
+        <frameName>imu_link</frameName>
+        <initialOrientationAsReference>false</initialOrientationAsReference>
+      </plugin>
+      <pose>0 0 0 0 0 0</pose>
+    </sensor>
+  </gazebo>
+
+<!--Adding a Camera-->
+
+<gazebo reference="camera_link">
+      
+  <sensor type="depth" name="kinect">
+<always_on>1</always_on>
+<visualize>true</visualize>
+<update_rate>0</update_rate>
+<camera>
+  <horizontal_fov>1.047198</horizontal_fov>
+  <image>
+    <width>640</width>
+    <height>480</height>
+    <format>B8G8R8</format>  <!--Changed format since channels were inverted, to go back, change to R8G8B8-->
+  </image>
+  <clip>
+    <near>0.01</near>
+    <far>3</far>
+  </clip>
+</camera>
+
+<plugin name="camera_controller" filename="libgazebo_ros_openni_kinect.so">
+  <baseline>0.2</baseline>
+  <alwaysOn>true</alwaysOn>
+  <updateRate>0.0</updateRate>
+  <cameraName>/kinect</cameraName>
+  <imageTopicName>/kinect/depth/image_raw</imageTopicName>
+  <cameraInfoTopicName>/kinect/depth/camera_info</cameraInfoTopicName>
+  <depthImageTopicName>/kinect/depth/image_raw</depthImageTopicName>
+  <depthImageInfoTopicName>/kinect/depth/camera_info</depthImageInfoTopicName>
+  <pointCloudTopicName>/kinect/depth/points</pointCloudTopicName>
+  <frameName>kinect_optical_link</frameName>
+  <pointCloudCutoff>0.1</pointCloudCutoff>
+  <pointCloudCutoffMax>3</pointCloudCutoffMax>
+  <distortionK1>0</distortionK1>
+  <distortionK2>0</distortionK2>
+  <distortionK3>0</distortionK3>
+  <distortionT1>0</distortionT1>
+  <distortionT2>0</distortionT2>
+  <CxPrime>0</CxPrime>
+  <Cx>0</Cx>
+  <Cy>0</Cy>
+  <focalLength>0</focalLength>
+  <hackBaseline>0</hackBaseline>
+</plugin>
+  </sensor>
+</gazebo>
+
+<gazebo>
+  <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+    <robotNamespace>/skateboard_test</robotNamespace>
+  </plugin>
+</gazebo> 
+
+
+  <transmission name="tran1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="RLM">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor1">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="FLM">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor2">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran3">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="RRM">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor3">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran4">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="FRM">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor4">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+</robot>

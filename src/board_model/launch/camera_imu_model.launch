@@ -1,20 +1,47 @@
 <launch>
 
-  <arg name="model" />
+<env name="GAZEBO_MODEL_PATH" value="$(find board_model)/models"/>
 
-  <include file="$(find gazebo_ros)/launch/empty_world.launch" />
-  
+<!-- <arg name="model"/>-->
+
+<include file="$(find gazebo_ros)/launch/empty_world.launch">
+  <arg name="world_name" value="$(find board_model)/world/board.world"/>
+</include>
+
+<include file = "$(find board_model)/launch/controller.launch" />
+
+<!-- Robot pose -->
+<arg name="x" default="0"/>
+<arg name="y" default="0"/>
+<arg name="z" default="0.4"/>
+<arg name="roll" default="0"/>
+<arg name="pitch" default="0"/>
+<arg name="yaw" default="1.571"/>
+
   <node name="tf_footprint_base" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 base_link base_footprint 40" />
+
+  <!-- Spawn the robot from the URDF that was loaded into the robot_description
+       parameter -->
+       <node name="spawn_urdf"
+       pkg="gazebo_ros"
+       type="spawn_model"
+       args="-param robot_description -urdf
+             -x $(arg x) -y $(arg y) -z $(arg z)
+             -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)
+             -model skateboard_test"/>
   
-  <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" args="-file $(find board_model)/urdf/skateboard_imu_Camera.urdf -urdf -model skateboard_test" output="screen" />
+  <!--<node name="spawn_model" pkg="gazebo_ros" type="spawn_model" args="-file $(find board_model)/urdf/skateboard_imu_Camera.urdf -urdf -model skateboard_test" output="screen" />-->
   
   <node name="fake_joint_calibration" pkg="rostopic" type="rostopic" args="pub /calibrated std_msgs/Bool true" />
 
   <param name="robot_description" textfile="$(find board_model)/urdf/skateboard_imu_Camera.urdf" />
-  
-  <!-- <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" /> -->
+
+  <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
   
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
 
+  <!-- <node name="effort_node" pkg="board_model" type="effort_publisher.py"/> -->
+
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find board_model)/urdf.rviz" />
+  
 </launch>

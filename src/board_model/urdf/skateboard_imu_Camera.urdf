@@ -4,7 +4,6 @@
      For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
 <robot name="skateboard_test">
 
-
    <link name="base_link">
     <visual>
       <geometry>
@@ -15,7 +14,6 @@
   <gazebo reference="base_link">
     <material>Gazebo/Blue</material>
   </gazebo>
-
 
   <link name="board">
     <inertial>
@@ -120,7 +118,6 @@
     <limit effort="1" velocity="1" />
   </joint>
 
-
   <link name="RR">
     <inertial>
       <origin xyz="-1.11022302462516E-16 0.0164457831325302 0" rpy="0 0 0" />
@@ -206,7 +203,7 @@
       </geometry>
     </collision>
       <visual>
-        <origin xyz="0.85 0.0 0.05" rpy="0.0 0.0 0.0"/>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
         <geometry>
           <mesh filename = "package://board_model/models/kinect/meshes/kinect.dae"/>
         </geometry>
@@ -221,11 +218,12 @@
       <child link="camera_link" />
     </joint>
     <joint name="camera_optical_joint" type="fixed">
-      <origin xyz="0 0 0" rpy="-1.57 0 -1.57" />
+      <origin xyz="0.0 0.0 0.0" rpy="-1.57 0.0 -1.57" />
       <parent link="camera_link" />
       <child link="kinect_optical_link" />
     </joint>
 
+<!--
 <gazebo>
   <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
     <updateRate>10.0</updateRate>
@@ -241,7 +239,7 @@
     <topicName>cmd_vel</topicName>
     <broadcastTF>false</broadcastTF>
   </plugin>
-</gazebo>
+</gazebo>-->
 
   <link name="imu_link"> 
     <visual> 
@@ -330,4 +328,55 @@
 </plugin>
   </sensor>
 </gazebo>
+
+<gazebo>
+  <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+    <robotNamespace>/skateboard_test</robotNamespace>
+  </plugin>
+</gazebo> 
+
+<transmission name="tran1">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="RLM">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="motor1">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="tran2">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="FLM">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="motor2">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="tran3">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="RRM">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="motor3">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="tran4">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="FRM">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="motor4">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
 </robot>
