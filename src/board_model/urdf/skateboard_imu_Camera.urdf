@@ -80,7 +80,7 @@
     <parent link="board" />
     <child link="RL" />
     <axis xyz="0 -1 0" />
-    <limit effort="1" velocity="1" />
+    <limit effort="2" velocity="2" />
   </joint>
 
 
@@ -115,7 +115,7 @@
     <parent link="board" />
     <child link="FL" />
     <axis xyz="0 -1 0" />
-    <limit effort="1" velocity="1" />
+    <limit effort="2" velocity="2" />
   </joint>
 
   <link name="RR">
@@ -152,7 +152,7 @@
     <parent link="board" />
     <child link="RR" />
     <axis xyz="0 -1 0" />
-    <limit effort="1" velocity="1" />
+    <limit effort="2" velocity="2" />
   </joint>
 
 
@@ -187,7 +187,7 @@
     <parent link="board" />
     <child link="FR" />
     <axis xyz="0 -1 0" />
-    <limit effort="1" velocity="1" />
+    <limit effort="2" velocity="2" />
   </joint>
 
   <!-- Camera Link -->
@@ -307,6 +307,8 @@
   <alwaysOn>true</alwaysOn>
   <updateRate>0.0</updateRate>
   <cameraName>/kinect</cameraName>
+  <imageTopicName>/camera/color/image_raw</imageTopicName>
+  <cameraInfoTopicName>/camera/color/camera_info</cameraInfoTopicName>
   <imageTopicName>/kinect/depth/image_raw</imageTopicName>
   <cameraInfoTopicName>/kinect/depth/camera_info</cameraInfoTopicName>
   <depthImageTopicName>/kinect/depth/image_raw</depthImageTopicName>

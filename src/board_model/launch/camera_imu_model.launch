@@ -18,11 +18,11 @@
 <arg name="pitch" default="0"/>
 <arg name="yaw" default="1.571"/>
 
-  <node name="tf_footprint_base" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 base_link base_footprint 40" />
+<node name="tf_footprint_base" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 base_link base_footprint 40" />
 
   <!-- Spawn the robot from the URDF that was loaded into the robot_description
        parameter -->
-       <node name="spawn_urdf"
+  <node name="spawn_urdf"
        pkg="gazebo_ros"
        type="spawn_model"
        args="-param robot_description -urdf
@@ -40,7 +40,7 @@
   
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
 
-  <!-- <node name="effort_node" pkg="board_model" type="effort_publisher.py"/> -->
+  <node name="image_node" pkg="board_model" type="data_collection.py" output="screen"/>
 
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find board_model)/urdf.rviz" />
   
