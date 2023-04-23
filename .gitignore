@@ -4,3 +4,4 @@ build/
 bin/
 lib/
 .catkin_workspace
+*.dae
