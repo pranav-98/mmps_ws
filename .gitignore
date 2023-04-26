@@ -5,3 +5,4 @@ bin/
 lib/
 .catkin_workspace
 *.dae
+src/board_model/textures/

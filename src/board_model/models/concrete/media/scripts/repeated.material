@@ -8,7 +8,7 @@ material RepeatedGrass/Diffuse
       texture_unit
       {
         // Relative to the location of the material script
-        concrete.jpg
+        texture concrete.jpg
         // Repeat the texture over the surface (4 per face)
       }
     }

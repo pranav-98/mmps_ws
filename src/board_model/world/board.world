@@ -6,7 +6,7 @@
 
     <include>
       <name>terrain</name>
-      <uri>model://asphalt</uri>
+      <uri>model://concrete</uri>
       <pose>0 0 0 0 0 0</pose>
     </include>
 
