@@ -12,7 +12,7 @@
 
 <!-- Robot pose -->
 <arg name="x" default="0.0"/>
-<arg name="y" default="3.5"/>
+<arg name="y" default="8.0"/>
 <arg name="z" default="0.4"/>
 <arg name="roll" default="0"/>
 <arg name="pitch" default="0"/>
@@ -40,9 +40,13 @@
   
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
 
-  <node name="image_node" pkg="board_model" type="data_collection.py" output="screen"/>
+  <!-- <node name="obj_det" pkg="board_model" type="obj_det.py" output="screen"/>  -->
+
+  <node name="combined_image_node" pkg="board_model" type="data_collection.py" output="screen"/>
+
+  <!-- <node name="image_node" pkg="board_model" type="rgb_collection.py" output="screen"/> -->
   
-  <node name="depth_image_node" pkg="board_model" type="depth_collection.py" output="screen"/>
+  <!-- <node name="depth_image_node" pkg="board_model" type="depth_collection.py" output="screen"/> -->
 
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find board_model)/urdf.rviz" />
   

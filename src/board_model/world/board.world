@@ -10,6 +10,12 @@
       <pose>0 0 0 0 0 0</pose>
     </include>
 
+    <include>
+      <name>rocks</name>
+      <uri>model://rocks</uri>
+      <pose>0 0 0 0 0 0</pose>
+    </include>
+
     <!-- <include>
       <name>cube_1</name>
       <uri>model://block_1</uri>

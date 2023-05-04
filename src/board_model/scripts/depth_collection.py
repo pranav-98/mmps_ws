@@ -7,53 +7,7 @@ import numpy as np
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge,CvBridgeError
 from std_msgs.msg import Float64
-
-# class Mobbot(object):
-#     def __init__(self):
-#         #Publish Torques on this topics
-#         self.REAR_LEFT_WHEEL = "/skateboard_test/joint1_effort_controller/command"
-#         self.FRONT_LEFT_WHEEL = "/skateboard_test/joint2_effort_controller/command"
-#         self.REAR_RIGHT_WHEEL = "/skateboard_test/joint3_effort_controller/command"
-#         self.FRONT_RIGHT_WHEEL = "/skateboard_test/joint4_effort_controller/command"
-        
-#         #Create a ROS Publishers.
-#         self.pub_1 = rospy.Publisher(self.REAR_LEFT_WHEEL,Float64,queue_size=1)
-#         self.pub_2 = rospy.Publisher(self.FRONT_LEFT_WHEEL,Float64,queue_size=1)
-#         self.pub_3 = rospy.Publisher(self.REAR_RIGHT_WHEEL,Float64,queue_size=1)
-#         self.pub_4 = rospy.Publisher(self.FRONT_RIGHT_WHEEL,Float64,queue_size=1)
-        
-#     def move(self,command):
-        
-#         if  command == "w":
-#             self.pub_1.publish(1.0)
-#             self.pub_2.publish(1.0)
-#             self.pub_3.publish(1.0)
-#             self.pub_4.publish(1.0)
-        
-#         elif(command=="a"):
-#             self.pub_1.publish(1.0)
-#             self.pub_2.publish(1.0)
-#             self.pub_3.publish(-1.0)
-#             self.pub_4.publish(-1.0)
-        
-#         elif(command == "d"):
-#             self.pub_1.publish(-1.0)
-#             self.pub_2.publish(-1.0)
-#             self.pub_3.publish(1.0)
-#             self.pub_4.publish(1.0)
-        
-#         elif(command== "s"):
-#             self.pub_1.publish(0.0)
-#             self.pub_2.publish(0.0)
-#             self.pub_3.publish(0.0)
-#             self.pub_4.publish(0.0)
-        
-#         else:
-#             print("Unknown Input")
-    
-#     def __del__(self):
-#         print("MMBOT Object deleted")
-    
+   
         
 class Camera(object):
 
@@ -78,7 +32,7 @@ class Camera(object):
     
     def save_image(self,img):
         self.counter += 1
-        cv2.imwrite("/home/varun/mmps_ws/src/board_model/data/img" + str(self.counter) + ".jpg",img)
+        cv2.imwrite("/home/ajith/Documents/git_repos/mmps_ws/src/board_model/scripts/depth_images/img" + str(self.counter) + ".jpg",img)
 
 
 def callback(msg):
@@ -90,12 +44,12 @@ def callback(msg):
     
     #bot.move()
     
-    if cv2.waitKey(1)%256 == 32:
+    if cv2.waitKey(0)%256 == 32:
         print("Image Captured and Saved")
         cam.save_image(depth_image)
 
 def main():
-    global cam,sub,bot
+    global cam,sub
 
     cam = Camera()
     # bot = Mobbot()

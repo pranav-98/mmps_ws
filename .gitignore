@@ -5,4 +5,11 @@ bin/
 lib/
 .catkin_workspace
 *.dae
+*.avi
+*.zip
 src/board_model/textures/
+src/board_model/scripts/depth_images/
+src/board_model/scripts/PointClouds/
+src/board_model/scripts/RGB_images/
+src/board_model/scripts/det_output/yolov5/
+src/board_model/data/
