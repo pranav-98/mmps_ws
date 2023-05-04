@@ -1,0 +1,2 @@
+board_model:mob_bot_controller
+-DCATKIN_DEVEL_PREFIX=/home/pranav/Desktop/mmps/mmps_ws/devel -DCMAKE_INSTALL_PREFIX=/home/pranav/Desktop/mmps/mmps_ws/install -G Unix Makefiles

@@ -1,0 +1,8 @@
+prefix=/home/pranav/Desktop/mmps/mmps_ws/devel
+
+Name: mob_bot_controller
+Description: Description of mob_bot_controller
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
