@@ -1,0 +1,72 @@
+<sdf version='1.6'>
+  <world name='default'>
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <include>
+      <name>terrain</name>
+      <uri>model://ground_plane</uri>
+      <pose>0 0 0 0 0 1.5708</pose>
+    </include>
+
+    <include>
+      <name>cube_1</name>
+      <uri>model://block_1</uri>
+      <pose>-8.0 0.0 0.3 0 0 1.5708</pose>
+    </include>
+
+    <include>
+      <name>cube_2</name>
+      <uri>model://block_2</uri>
+      <pose>-8.0 0.0 0.4 0 0 1.5708</pose>
+    </include>
+
+    <include>
+      <name>cube_3</name>
+      <uri>model://block_1</uri>
+      <pose>-8.0 0.0 0.5 0 0 1.5708</pose>
+    </include>
+
+    <include>
+      <name>cube_4</name>
+      <uri>model://block_2</uri>
+      <pose>-8.0 0.0 0.6 0 0 1.5708</pose>
+    </include>
+
+    <include>
+      <name>cube_5</name>
+      <uri>model://block_1</uri>
+      <pose>-8.0 0.0 0.7 0 0 1.5708</pose>
+    </include>
+
+    <include>
+      <name>cube_6</name>
+      <uri>model://block_2</uri>
+      <pose>-8.0 0.0 0.8 0 0 1.5708</pose>
+    </include>
+
+    <include>
+      <name>cube_7</name>
+      <uri>model://block_1</uri>
+      <pose>-8.0 0.0 0.9 0 0 1.5708</pose>
+    </include>
+
+    <include>
+      <name>cube_8</name>
+      <uri>model://block_2</uri>
+      <pose>-8.0 0.0 1.0 0 0 1.5708</pose>
+    </include>
+
+
+
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose frame=''>9.0 -12.0 6.0 0.0 0.3 2.2</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+
+  </world>
+</sdf>

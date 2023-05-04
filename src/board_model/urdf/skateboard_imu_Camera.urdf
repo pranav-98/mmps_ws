@@ -4,7 +4,6 @@
      For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
 <robot name="skateboard_test">
 
-
    <link name="base_link">
     <visual>
       <geometry>
@@ -16,11 +15,10 @@
     <material>Gazebo/Blue</material>
   </gazebo>
 
-
   <link name="board">
     <inertial>
       <origin xyz="1.11022302462516E-16 2.22044604925031E-16 -0.02" rpy="0 0 0" />
-      <mass value="27.3013030088211" />
+      <mass value="10.3013030088211" />
       <inertia ixx="0.436974212688559" ixy="-2.08482647590779E-16" ixz="1.46553164878288E-18" iyy="5.52949386470104" iyz="-5.6225255944912E-35" izz="5.95908972393442" />
     </inertial>
     <visual>
@@ -41,6 +39,9 @@
       </geometry>
     </collision>
   </link>
+  <gazebo reference="board">
+    <material>Gazebo/Orange</material>
+  </gazebo>
 
   <joint name="base_link_to_board" type="fixed">
     <parent link="base_link"/>
@@ -51,7 +52,7 @@
   <link name="RL">
     <inertial>
       <origin xyz="0 -0.0164457831325302 0" rpy="0 0 0" />
-      <mass value="0.977820713429824" />
+      <mass value="1.77820713429824" />
       <inertia ixx="0.00249073621179516" ixy="1.44480049501577E-19" ixz="-1.54917164485708E-35" iyy="0.00471636505858689" iyz="-1.27332169414445E-36" izz="0.00249073621179516" />
     </inertial>
     <visual>
@@ -70,20 +71,23 @@
       </geometry>
     </collision>
   </link>
+  <gazebo reference="RL">
+    <material>Gazebo/Green</material>
+  </gazebo>
 
   <joint name="RLM" type="continuous">
     <origin xyz="-0.5 0.264838012958963 -0.02" rpy="0 0 0" />
     <parent link="board" />
     <child link="RL" />
     <axis xyz="0 -1 0" />
-    <limit effort="1" velocity="1" />
+    <limit effort="200" velocity="200" />
   </joint>
 
 
   <link name="FL">
     <inertial>
       <origin xyz="0 -0.0164457831325302 0" rpy="0 0 0" />
-      <mass value="0.977820713429824" />
+      <mass value="1.77820713429824" />
       <inertia ixx="0.00249073621179516" ixy="-5.28109900243798E-20" ixz="2.89909158180102E-19" iyy="0.00471636505858689" iyz="7.85944170610457E-20" izz="0.00249073621179516" />
     </inertial>
     <visual>
@@ -102,20 +106,22 @@
       </geometry>
     </collision>
   </link>
+  <gazebo reference="FL">
+    <material>Gazebo/Green</material>
+  </gazebo>
 
   <joint name="FLM" type="continuous">
     <origin xyz="0.5 0.264838012958963 -0.0199999999999998" rpy="0 0 0" />
     <parent link="board" />
     <child link="FL" />
     <axis xyz="0 -1 0" />
-    <limit effort="1" velocity="1" />
+    <limit effort="200" velocity="200" />
   </joint>
-
 
   <link name="RR">
     <inertial>
       <origin xyz="-1.11022302462516E-16 0.0164457831325302 0" rpy="0 0 0" />
-      <mass value="0.977820713429824" />
+      <mass value="1.77820713429824" />
       <inertia ixx="0.00249073621179516" ixy="-1.54140749670845E-17" ixz="1.54917164485711E-35" iyy="0.00471636505858689" iyz="1.27332169414449E-36" izz="0.00249073621179516" />
     </inertial>
     <visual>
@@ -137,20 +143,23 @@
       </geometry>
     </collision>
   </link>
+  <gazebo reference="RR">
+    <material>Gazebo/Green</material>
+  </gazebo>
 
   <joint name="RRM" type="continuous">
     <origin xyz="-0.500000000000007 -0.26483801295897 -0.0199999999999996" rpy="0 0 0" />
     <parent link="board" />
     <child link="RR" />
     <axis xyz="0 -1 0" />
-    <limit effort="1" velocity="1" />
+    <limit effort="200" velocity="200" />
   </joint>
 
 
   <link name="FR">
     <inertial>
       <origin xyz="-1.11022302462516E-16 0.0164457831325302 0" rpy="0 0 0" />
-      <mass value="0.977820713429824" />
+      <mass value="1.77820713429824" />
       <inertia ixx="0.00249073621179516" ixy="-1.54115109552635E-17" ixz="1.5491716448571E-35" iyy="0.00471636505858689" iyz="1.27332169414452E-36" izz="0.00249073621179516" />
     </inertial>
     <visual>
@@ -169,30 +178,52 @@
       </geometry>
     </collision>
   </link>
+  <gazebo reference="FR">
+    <material>Gazebo/Green</material>
+  </gazebo>
 
   <joint name="FRM" type="continuous">
     <origin xyz="0.499999999999993 -0.264838012958963 -0.0199999999999998" rpy="0 0 0" />
     <parent link="board" />
     <child link="FR" />
     <axis xyz="0 -1 0" />
-    <limit effort="1" velocity="1" />
+    <limit effort="200" velocity="200" />
   </joint>
 
   <!-- Camera Link -->
-  <link name="camera_link"></link>
+  <link name="camera_link">
+    <inertial>
+      <mass value = "0.1"/>
+      <inertia ixx="0.000001" ixy="0" ixz="0" iyy="0.0000001" iyz="0" izz="0.000001"/>
+    </inertial>
+    <collision>
+      <origin xyz="0.85 0.0 0.05" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <box size = "0.073000 0.276000 0.072000"/>
+      </geometry>
+    </collision>
+      <visual>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <geometry>
+          <mesh filename = "package://board_model/models/kinect/meshes/kinect.dae"/>
+        </geometry>
+      </visual>
+  </link>
+
     <link name="kinect_optical_link"></link>
     
     <joint name="robot_camera_joint" type="fixed">
-      <origin xyz="-0.05 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <origin xyz="0.85 0.0 0.05" rpy="0.0 0.0 0.0" />
       <parent link="base_link" />
       <child link="camera_link" />
     </joint>
     <joint name="camera_optical_joint" type="fixed">
-      <origin xyz="0 0 0" rpy="-1.57 0 -1.57" />
-      <parent link="base_link" />
+      <origin xyz="0.0 0.0 0.0" rpy="-1.57 0.0 -1.57" />
+      <parent link="camera_link" />
       <child link="kinect_optical_link" />
     </joint>
 
+<!--
 <gazebo>
   <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
     <updateRate>10.0</updateRate>
@@ -208,7 +239,7 @@
     <topicName>cmd_vel</topicName>
     <broadcastTF>false</broadcastTF>
   </plugin>
-</gazebo>
+</gazebo>-->
 
   <link name="imu_link"> 
     <visual> 
@@ -276,6 +307,8 @@
   <alwaysOn>true</alwaysOn>
   <updateRate>0.0</updateRate>
   <cameraName>/kinect</cameraName>
+  <imageTopicName>/camera/color/image_raw</imageTopicName>
+  <cameraInfoTopicName>/camera/color/camera_info</cameraInfoTopicName>
   <imageTopicName>/kinect/depth/image_raw</imageTopicName>
   <cameraInfoTopicName>/kinect/depth/camera_info</cameraInfoTopicName>
   <depthImageTopicName>/kinect/depth/image_raw</depthImageTopicName>
@@ -297,4 +330,55 @@
 </plugin>
   </sensor>
 </gazebo>
+
+<gazebo>
+  <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+    <robotNamespace>/skateboard_test</robotNamespace>
+  </plugin>
+</gazebo> 
+
+<transmission name="tran1">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="RLM">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="motor1">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="tran2">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="FLM">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="motor2">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="tran3">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="RRM">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="motor3">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="tran4">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="FRM">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="motor4">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
 </robot>
