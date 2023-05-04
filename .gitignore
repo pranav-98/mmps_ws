@@ -13,4 +13,8 @@ src/board_model/scripts/depth_images/
 src/board_model/scripts/PointClouds/
 src/board_model/scripts/RGB_images/
 src/board_model/scripts/det_output/yolov5/
+!src/board_model/scripts/det_output/yolov5/YOLOv5/
+!src/board_model/scripts/det_output/yolov5/depth_extract.py
+!src/board_model/scripts/det_output/yolov5/img2vid.py
+!src/board_model/scripts/det_output/yolov5/yolov5l.pt
 src/board_model/data/
